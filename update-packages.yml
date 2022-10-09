@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  pre_tasks:
+    - name: sync repo and update packages (Ubuntu)
+      tags: u
+      apt:
+        update_cache: yes
+        upgrade: dist
+      when: ansible_distribution == "Ubuntu"
+    - name: sync repo and update packages (Rocky)
+      tags: r
+      dnf:
+        update_cache: yes
+        update_only: yes
+      when: ansible_distribution == "Rocky"
