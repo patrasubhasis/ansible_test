@@ -1,0 +1,11 @@
+- hosts: ubuntu_servers
+  become: true
+  tasks:
+    - name: copying test html to servers
+      tags: copy,html
+      copy:
+        src: test.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
