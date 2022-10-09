@@ -2,36 +2,21 @@
 - hosts: all
   become: yes
   tasks:
+    - name: sync repo and update packages (Ubuntu)
+      apt:
+        update_cache: yes
+        upgrade: dist
+      when: ansible_distribution == "Ubuntu"
+    - name: sync repo and update packages (Rocky)
+      dnf:
+        update_cache: yes
+        update_only: yes
+      when: ansible_distribution == "Rocky"
 
-  - name: update repo
-    ansible.builtin.apt:
-      update_cache: yes
-    when: ansible_distribution == "Ubuntu"
-
-  - name: upgrade packages
-    ansible.builtin.apt:
-      upgrade: yes
-    when: ansible_distribution == "Ubuntu"
-
-  - name: install apache2
-    ansible.builtin.apt:
-      name: apache2
-      state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: update repo
-    ansible.builtin.dnf:
-      update_cache: yes
-    when: ansible_distribution == "Rocky"
-
-  - name: upgrade packages
-    ansible.builtin.dnf:
-      name: "*"
-      state: latest
-    when: ansible_distribution == "Rocky"
-
-  - name: install apache2
-    ansible.builtin.dnf:
-      name: httpd
-      state: latest
-    when: ansible_distribution == "Rocky"
+- hosts: ubuntu_servers
+  become: yes
+  tasks:
+    - name: install apache2
+      apt:
+        name: apache2
+        state: latest
