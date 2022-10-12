@@ -1,0 +1,10 @@
+- hosts: rocky_servers
+  become: yes
+  tasks:
+    - name: start and enable httpd
+      tags: httpd,rocky,start,enable
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+          #        state: restarted

@@ -1,0 +1,37 @@
+{
+    "_meta": {
+        "hostvars": {}
+    },
+    "all": {
+        "children": [
+            "arco",
+            "rocky_servers",
+            "servers",
+            "ubuntu_servers",
+            "ungrouped"
+        ]
+    },
+    "arco": {
+        "hosts": [
+            "10.0.10.85"
+        ]
+    },
+    "rocky_servers": {
+        "hosts": [
+            "10.0.11.176"
+        ]
+    },
+    "servers": {
+        "hosts": [
+            "10.0.11.137",
+            "10.0.11.158",
+            "10.0.11.176"
+        ]
+    },
+    "ubuntu_servers": {
+        "hosts": [
+            "10.0.11.137",
+            "10.0.11.158"
+        ]
+    }
+}

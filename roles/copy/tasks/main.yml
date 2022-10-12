@@ -1,0 +1,8 @@
+- name: copying file
+  tags: copy
+  copy:
+    src: fruits.txt
+    dest: /home/sp/
+    owner: root
+    group: root
+    mode: 0644

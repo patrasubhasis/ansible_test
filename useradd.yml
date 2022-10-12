@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+  tasks:
+      - name: create ansible user
+        user:
+          name: neo
+          groups: root
+      - name: add ssh-key ansible.pub
+        authorized_key:
+          user: neo
+          key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHFGr0IAFtnmQgK9myhw+AAhcet6hcPcezbzADo1zxP/ ansible
+" 
+      - name: add neo to sudoers file
+        copy:
+          src: sudoer_neo
+          dest: /etc/sudoers.d/neo
+          owner: root
+          group: root

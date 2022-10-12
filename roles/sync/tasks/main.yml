@@ -1,0 +1,4 @@
+- name: sync repo
+  tags: apt,update
+  apt:
+    update_cache: yes

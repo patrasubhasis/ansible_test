@@ -1,0 +1,8 @@
+- hosts: 10.0.11.137
+  tags: file
+  tasks:
+    - name: change file fruits.txt
+      lineinfile:
+        path: /home/sp/fruits.txt
+        regexp: '^kadali'
+        line: banana

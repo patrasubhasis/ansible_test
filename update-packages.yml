@@ -1,16 +1,22 @@
 ---
 - hosts: all
   become: yes
-  pre_tasks:
+  tasks:
     - name: sync repo and update packages (Ubuntu)
-      tags: u
+      tags: apt,ubuntu
       apt:
         update_cache: yes
         upgrade: dist
       when: ansible_distribution == "Ubuntu"
     - name: sync repo and update packages (Rocky)
-      tags: r
+      tags: dnf,rocky
       dnf:
         update_cache: yes
         update_only: yes
       when: ansible_distribution == "Rocky"
+    - name: sync repo and update packages (Arco)
+      tags: pacman,arco
+      pacman:
+        update_cache: yes
+        upgrade: yes
+      when: ansible_distribution == "Archlinux"

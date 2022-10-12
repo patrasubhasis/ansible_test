@@ -1,0 +1,17 @@
+---
+
+- hosts: 10.0.11.137
+  become: true
+  roles:
+    - sync
+  
+- hosts: 10.0.11.137
+  become: true
+  roles:
+    - update
+
+- hosts: 10.0.11.137
+  become: true
+  roles:
+    - copy
+...

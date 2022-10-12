@@ -6,3 +6,21 @@
       apt:
         name: apache2
         state: latest
+
+- hosts: rocky_servers
+  become: yes
+  tasks:
+    - name: install httpd
+      tags: h
+      dnf:
+        name: httpd
+        state: latest
+
+- hosts: arco
+  become: yes
+  tasks:
+    - name: install htop
+      tags: p
+      community.general.pacman:
+        name: htop
+        state: latest
